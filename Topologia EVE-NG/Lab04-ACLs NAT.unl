@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<lab name="Lab04 - ACLs NAT" version="1" scripttimeout="300" lock="0">
+  <topology>
+    <nodes>
+      <node id="1" name="PC1Linux" type="qemu" template="linux" image="linux-alpine" console="vnc" cpu="1" cpulimit="0" ram="256" ethernet="1" uuid="19af7298-c591-45d3-a89e-f48c2286f5ae" firstmac="00:50:00:00:01:00" qemu_options="-machine type=pc,accel=kvm -vga std -usbdevice tablet -boot order=cd -cpu host" qemu_version="2.12.0" qemu_arch="x86_64" qemu_nic="virtio-net-pci" delay="0" icon="Server-2D-Linux-S.svg" config="0" left="618" top="660">
+        <interface id="0" name="e0" type="ethernet" network_id="15"/>
+      </node>
+      <node id="9" name="Server" type="qemu" template="linux" image="linux-ubuntu-server" console="vnc" cpu="1" cpulimit="0" ram="2048" ethernet="2" uuid="010c0537-7862-48b0-92f0-f4b8bd56bf9f" firstmac="00:50:00:00:09:00" qemu_options="-machine type=pc,accel=kvm -vga std -usbdevice tablet -boot order=cd -cpu host" qemu_version="2.12.0" qemu_arch="x86_64" qemu_nic="virtio-net-pci" delay="0" icon="Server-2D-Linux-S.svg" config="0" left="1080" top="249">
+        <interface id="0" name="e0" type="ethernet" network_id="3"/>
+      </node>
+      <node id="11" name="Admin" type="qemu" template="linux" image="linux-alpine" console="vnc" cpu="1" cpulimit="0" ram="256" ethernet="1" uuid="94d3fa0b-b31d-49b5-8165-87b79d0ec02b" firstmac="00:50:00:00:0b:00" qemu_options="-machine type=pc,accel=kvm -vga std -usbdevice tablet -boot order=cd -cpu host" qemu_version="2.12.0" qemu_arch="x86_64" qemu_nic="virtio-net-pci" delay="0" icon="PC-2D-Laptop-Sec-Generic-S.svg" config="0" left="468" top="624">
+        <interface id="0" name="e0" type="ethernet" network_id="16"/>
+      </node>
+      <node id="2" name="SWAccess1" type="iol" template="iol" image="i86bi_LinuxL2-AdvEnterpriseK9-M_152_May_2018.bin" ethernet="1" nvram="1024" ram="512" serial="0" console="" delay="0" icon="Switch-3D-L2-S.svg" config="0" left="636" top="540">
+        <interface id="0" name="e0/0" type="ethernet" network_id="15"/>
+        <interface id="16" name="e0/1" type="ethernet" network_id="9"/>
+        <interface id="32" name="e0/2" type="ethernet" network_id="11"/>
+        <interface id="48" name="e0/3" type="ethernet" network_id="16"/>
+      </node>
+      <node id="3" name="SWAccess2" type="iol" template="iol" image="i86bi_LinuxL2-AdvEnterpriseK9-M_152_May_2018.bin" ethernet="1" nvram="1024" ram="512" serial="0" console="" delay="0" icon="Switch-3D-L2-S.svg" config="0" left="885" top="546">
+        <interface id="0" name="e0/0" type="ethernet" network_id="14"/>
+        <interface id="16" name="e0/1" type="ethernet" network_id="10"/>
+        <interface id="32" name="e0/2" type="ethernet" network_id="12"/>
+      </node>
+      <node id="4" name="SWDistr1" type="iol" template="iol" image="i86bi_LinuxL2-AdvEnterpriseK9-M_152_May_2018.bin" ethernet="2" nvram="1024" ram="512" serial="0" console="" delay="0" icon="Switch-2D-L3-Generic-S.svg" config="0" left="648" top="390">
+        <interface id="0" name="e0/0" type="ethernet" network_id="5"/>
+        <interface id="16" name="e0/1" type="ethernet" network_id="17"/>
+        <interface id="32" name="e0/2" type="ethernet" network_id="9"/>
+        <interface id="48" name="e0/3" type="ethernet" network_id="12"/>
+        <interface id="1" name="e1/0" type="ethernet" network_id="8"/>
+        <interface id="17" name="e1/1" type="ethernet" network_id="7"/>
+      </node>
+      <node id="5" name="SWDistr2" type="iol" template="iol" image="i86bi_LinuxL2-AdvEnterpriseK9-M_152_May_2018.bin" ethernet="2" nvram="1024" ram="512" serial="0" console="" delay="0" icon="Switch-2D-L3-Generic-S.svg" config="0" left="882" top="390">
+        <interface id="0" name="e0/0" type="ethernet" network_id="6"/>
+        <interface id="16" name="e0/1" type="ethernet" network_id="18"/>
+        <interface id="32" name="e0/2" type="ethernet" network_id="10"/>
+        <interface id="48" name="e0/3" type="ethernet" network_id="11"/>
+        <interface id="1" name="e1/0" type="ethernet" network_id="8"/>
+        <interface id="17" name="e1/1" type="ethernet" network_id="7"/>
+      </node>
+      <node id="6" name="SWCore1" type="iol" template="iol" image="i86bi_LinuxL2-AdvEnterpriseK9-M_152_May_2018.bin" ethernet="1" nvram="1024" ram="512" serial="0" console="" delay="0" icon="Switch-2D-L3-Generic-S.svg" config="0" left="654" top="237">
+        <interface id="0" name="e0/0" type="ethernet" network_id="4"/>
+        <interface id="16" name="e0/1" type="ethernet" network_id="1"/>
+        <interface id="32" name="e0/2" type="ethernet" network_id="5"/>
+        <interface id="48" name="e0/3" type="ethernet" network_id="18"/>
+      </node>
+      <node id="7" name="SWCore2" type="iol" template="iol" image="i86bi_LinuxL2-AdvEnterpriseK9-M_152_May_2018.bin" ethernet="2" nvram="1024" ram="512" serial="0" console="" delay="0" icon="Switch-2D-L3-Generic-S.svg" config="0" left="882" top="237">
+        <interface id="0" name="e0/0" type="ethernet" network_id="4"/>
+        <interface id="16" name="e0/1" type="ethernet" network_id="2"/>
+        <interface id="32" name="e0/2" type="ethernet" network_id="6"/>
+        <interface id="48" name="e0/3" type="ethernet" network_id="17"/>
+        <interface id="1" name="e1/0" type="ethernet" network_id="3"/>
+      </node>
+      <node id="10" name="Edge-RTR" type="iol" template="iol" image="i86bi_LinuxL3-AdvEnterpriseK9-M2_157_3_May_2018.bin" ethernet="1" nvram="1024" ram="512" serial="0" console="" delay="0" icon="Router-2D-Gen-White-S.svg" config="0" left="774" top="87">
+        <interface id="0" name="e0/0" type="ethernet" network_id="13"/>
+        <interface id="16" name="e0/1" type="ethernet" network_id="1"/>
+        <interface id="32" name="e0/2" type="ethernet" network_id="2"/>
+      </node>
+      <node id="8" name="PC2" type="qemu" template="linux" image="linux-alpine" console="vnc" cpu="1" cpulimit="0" ram="256" ethernet="1" uuid="14749673-6630-4675-acd3-f065c6000ef4" firstmac="00:50:00:00:08:00" qemu_options="-machine type=pc,accel=kvm -vga std -usbdevice tablet -boot order=cd -cpu host" qemu_version="2.12.0" qemu_arch="x86_64" qemu_nic="virtio-net-pci" delay="0" icon="Server-2D-Linux-S.svg" config="0" left="930" top="660">
+        <interface id="0" name="e0" type="ethernet" network_id="14"/>
+      </node>
+    </nodes>
+    <networks>
+      <network id="13" type="pnet0" name="Net" left="894" top="6" visibility="1" icon="01-Cloud-Default.svg"/>
+      <network id="1" type="bridge" name="Net-SWCore1iface_16" left="720" top="256" visibility="0" icon="lan.png"/>
+      <network id="2" type="bridge" name="Net-SWCore2iface_16" left="945" top="259" visibility="0" icon="lan.png"/>
+      <network id="3" type="bridge" name="Net-SWCore2iface_1" left="945" top="259" visibility="0" icon="lan.png"/>
+      <network id="4" type="bridge" name="Net-SWCore1iface_0" left="720" top="256" visibility="0" icon="lan.png"/>
+      <network id="5" type="bridge" name="Net-SWCore1iface_32" left="714" top="271" visibility="0" icon="lan.png"/>
+      <network id="6" type="bridge" name="Net-SWCore2iface_32" left="945" top="259" visibility="0" icon="lan.png"/>
+      <network id="7" type="bridge" name="Net-SWDistr1iface_17" left="708" top="430" visibility="0" icon="lan.png"/>
+      <network id="8" type="bridge" name="Net-SWDistr1iface_1" left="708" top="430" visibility="0" icon="lan.png"/>
+      <network id="9" type="bridge" name="Net-SWDistr1iface_32" left="708" top="430" visibility="0" icon="lan.png"/>
+      <network id="10" type="bridge" name="Net-SWDistr2iface_32" left="945" top="427" visibility="0" icon="lan.png"/>
+      <network id="11" type="bridge" name="Net-SWAccess1iface_32" left="699" top="559" visibility="0" icon="lan.png"/>
+      <network id="12" type="bridge" name="Net-SWDistr1iface_48" left="708" top="430" visibility="0" icon="lan.png"/>
+      <network id="15" type="bridge" name="Net-SWAccess1iface_0" left="696" top="580" visibility="0" icon="lan.png"/>
+      <network id="16" type="bridge" name="Net-SWAccess1iface_48" left="696" top="580" visibility="0" icon="lan.png"/>
+      <network id="17" type="bridge" name="Net-SWDistr1iface_16" left="708" top="430" visibility="0" icon="lan.png"/>
+      <network id="18" type="bridge" name="Net-SWCore1iface_48" left="714" top="265" visibility="0" icon="lan.png"/>
+      <network id="14" type="bridge" name="Net-PC2iface_0" left="990" top="700" visibility="0" icon="lan.png"/>
+    </networks>
+  </topology>
+  <objects>
+    <textobjects>
+      <textobject id="1" name="txt 1" type="text">
+        <data>PGRpdiBpZD0iY3VzdG9tVGV4dDEiIGNsYXNzPSJjdXN0b21TaGFwZSBjdXN0b21UZXh0IGNvbnRleHQtbWVudSBqdGstZHJhZ2dhYmxlIHVpLXJlc2l6YWJsZSB1aS1zZWxlY3RlZSBkcmFnc3RvcHBlZCIgZGF0YS1wYXRoPSIxIiBzdHlsZT0iZGlzcGxheTogaW5saW5lOyBwb3NpdGlvbjogYWJzb2x1dGU7IGxlZnQ6IDM2cHg7IHRvcDogMzlweDsgY3Vyc29yOiBtb3ZlOyB6LWluZGV4OiAxMDAxOyBoZWlnaHQ6IDEwMnB4OyB3aWR0aDogMTI3cHg7Ij48cCBhbGlnbj0iY2VudGVyIiBzdHlsZT0idmVydGljYWwtYWxpZ246dG9wO2NvbG9yOiMwMDAwMDA7YmFja2dyb3VuZC1jb2xvcjojZmZmZmZmO2ZvbnQtc2l6ZToxMnB4O2ZvbnQtd2VpZ2h0OiBub3JtYWw7IiBjb250ZW50ZWRpdGFibGU9ImZhbHNlIiBjbGFzcz0iIj51YnVudHUgc2VydmVyPGJyPjxicj5ub21icmU6d2luPGJyPnNlcnZlcm5hbWU6IGxhYi1zZXJ2ZXI8YnI+dXN1YXJpbyB3aW5sYWI8YnI+Y2xhdmU6IGV2ZSAgICAgICAgPC9wPjxkaXYgY2xhc3M9InVpLXJlc2l6YWJsZS1oYW5kbGUgdWktcmVzaXphYmxlLWUiIHN0eWxlPSJ6LWluZGV4OiA5MDsgZGlzcGxheTogYmxvY2s7Ij48L2Rpdj48ZGl2IGNsYXNzPSJ1aS1yZXNpemFibGUtaGFuZGxlIHVpLXJlc2l6YWJsZS1zIiBzdHlsZT0iei1pbmRleDogOTA7IGRpc3BsYXk6IGJsb2NrOyI+PC9kaXY+PGRpdiBjbGFzcz0idWktcmVzaXphYmxlLWhhbmRsZSB1aS1yZXNpemFibGUtc2UgdWktaWNvbiB1aS1pY29uLWdyaXBzbWFsbC1kaWFnb25hbC1zZSIgc3R5bGU9InotaW5kZXg6IDkwOyBkaXNwbGF5OiBibG9jazsiPjwvZGl2PjwvZGl2Pg==</data>
+      </textobject>
+    </textobjects>
+  </objects>
+</lab>

@@ -39,7 +39,7 @@ La red ya cuenta con la configuración básica y el enrutamiento dinámico (OSPF
 ##  Topología de la Red
 Microsoft Visio
 
-<img width="746" alt="image" src="./Topologia Logica/Lab-04-Topologia-Logica.png" />
+<img width="746" alt="image" src="./Topologia logica/Lab-04-Topologia-logica.png" />
 
 ###  Device's Management IPs
 
