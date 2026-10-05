@@ -4,7 +4,7 @@
 # Herramientas: Vmware, Eve-NG, Wireshark, Microsoft Visio, Visual Studio Code
 
 <img width="646" alt="image" src="./Topologia EVE-NG/lab04-eveng.png" /> 
-<img width="746" alt="image" src="./imagenes/Entorno-lab04.png" />
+<img width="746" alt="image" src="./imagenes/entorno-lab04.png" />
 
 ##  Descripción
 
